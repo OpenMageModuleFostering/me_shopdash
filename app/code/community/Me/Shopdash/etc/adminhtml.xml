@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+/**
+ * @category    Me
+ * @package     Me_Shopdash
+ * @author      Magevolve Ltd.
+ * @copyright   Copyright (c) 2013 ShopDash Inc. (http://shopdashapp.com/)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0) 
+ */ 
+ -->
+<config>
+    <menu>
+        <catalog>
+            <children>
+                <shopdash translate="title" module="me_shopdash">
+                    <title>Manage ShopDash</title>
+                    <children>
+                        <manage translate="title" module="me_shopdash">
+                            <title>Manage Export</title>
+                            <action>me_shopdash/adminhtml_shopdash/edit</action>
+                        </manage>
+                        <settings translate="title" module="me_shopdash">
+                            <title>Settings</title>
+                            <action>adminhtml/system_config/edit/section/shopdash</action>
+                        </settings>
+                    </children>
+                    <sort_order>60</sort_order>
+                </shopdash>
+            </children>
+        </catalog>
+    </menu>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <catalog>
+                        <children>
+                            <shopdash translate="title" module="me_shopdash">
+                                <title>Manage ShopDash</title>
+                                <children>
+                                    <manage translate="title">
+                                        <title>Manage Export</title>
+                                    </manage>
+                                    <settings translate="title">
+                                        <title>Settings</title>
+                                    </settings>
+                                </children>
+                            </shopdash>
+                        </children>
+                    </catalog>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <shopdash translate="title" module="me_shopdash">
+                                        <title>ShopDash Magento Extension</title>
+                                        <sort_order>500</sort_order>
+                                    </shopdash>
+                                    <info translate="title" module="me_shopdash">
+                                        <title>ShopDash Magento Extension Informations</title>
+                                        <sort_order>501</sort_order>
+                                    </info>
+                                    <help translate="title" module="me_shopdash">
+                                        <title>ShopDash Magento Extension Help</title>
+                                        <sort_order>502</sort_order>
+                                    </help>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

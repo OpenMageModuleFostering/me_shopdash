@@ -1,0 +1,293 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * @category    Me
+ * @package     Me_Shopdash
+ * @author      Magevolve Ltd.
+ * @copyright   Copyright (c) 2013 ShopDash Inc. (http://shopdashapp.com/)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0) 
+ */  
+-->
+<config>
+    <tabs>
+        <shopdash_tab translate="label" module="me_shopdash">
+            <label>ShopDash Extension</label>
+            <sort_order>99999</sort_order>
+        </shopdash_tab>
+    </tabs>
+    <sections>
+        <shopdash translate="label" module="me_shopdash">
+            <label>ShopDash Settings</label>
+            <tab>shopdash_tab</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>                    
+            <groups>
+                <config translate="label">
+                    <label>ShopDash Export Configuration</label>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>                
+                    <fields>
+                        <enable translate="label">
+                            <label>Enable</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Enable module.</comment>
+                        </enable>
+                        <filename translate="label">
+                            <label>Filename</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Name of the export file. I.e.: shopdash.xml. The export file name will be storeX_shopdash.xml, where X is the store id.</comment>
+                        </filename>
+                        <path translate="label">
+                            <label>Path</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Path to the export file. I.e.: /shopdash_feed.</comment>
+                        </path>
+                        <time translate="label">
+                            <label>Start Time</label>
+                            <frontend_type>time</frontend_type>
+                            <sort_order>5</sort_order>
+                            <backend_model>me_shopdash/system_config_backend_shopdash_cron</backend_model> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Daily export schedule. Format: HH:MM:SS.</comment>
+                        </time>
+                        <redirect translate="label">
+                            <label>Redirect</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>me_shopdash/system_config_source_redirect</source_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Redirect to shopping cart or to checkout page.</comment>
+                        </redirect>
+                        <run translate="label">
+                            <label>Run Export Now</label>
+                            <frontend_type>button</frontend_type>
+                            <frontend_model>me_shopdash/adminhtml_system_config_form_button</frontend_model>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </run>
+                    </fields>
+                </config>
+                <products translate="label">
+                    <label>Products Configuration</label>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <properties translate="label">
+                            <label>Product Properties</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>me_shopdash/system_config_source_properties</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Please select product's attributes.</comment>
+                        </properties>
+                        <unit translate="label">
+                            <label>Unit of Quantity</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>me_shopdash/system_config_source_textattributes</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Please select unit of quantity attribute.</comment>
+                        </unit>
+                        <unit_custom translate="label">
+                            <label>Custom Unit of Quantity</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <unit></unit>
+                            </depends>
+                            <comment>Custom discount name for every products. I.e.: qty, kg, etc.</comment>
+                        </unit_custom>
+                        <gallery>
+                            <label>Include Image Gallery</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>The export will include all product images.</comment>
+                        </gallery>
+                    </fields>
+                </products>
+                <category translate="label">
+                    <label>Category Configuration</label>
+                    <sort_order>3</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <category_all translate="label">
+                            <label>Select All Categories</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>If set to yes, all categories will be selected.</comment>
+                        </category_all>
+                        <category_ids translate="label">
+                            <label>Selected Categories</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>me_shopdash/system_config_source_category</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Please select categories.</comment>
+                            <depends>
+                                <category_all>0</category_all>
+                            </depends>
+                        </category_ids>
+                    </fields>
+                </category>
+                <deals translate="label">
+                    <label>Deal Configuration</label>
+                    <sort_order>4</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <deal_enable translate="label">
+                            <label>Enable Deal</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Enable deal in export.</comment>
+                        </deal_enable>
+                        <name translate="label">
+                            <label>Deal Name Attribute</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>me_shopdash/system_config_source_textattributes</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Please select deal name attribute.</comment>
+                            <depends>
+                                <deal_enable>1</deal_enable>
+                            </depends>
+                        </name>
+                        <name_custom translate="label">
+                            <label>Custom Deal Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Custom discount name for every products. I.e.: Special discount. This will be used if deal name attribute is not set.</comment>
+                            <depends>
+                                <deal_enable>1</deal_enable>
+                                <name></name>
+                            </depends>
+                            <validate>required-entry</validate>
+                        </name_custom>
+                        <priority translate="label">
+                            <label>Deal Priority</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>me_shopdash/system_config_source_priority</source_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Item size in the list. Available values: small, medium, huge.</comment>
+                            <depends>
+                                <deal_enable>1</deal_enable>
+                            </depends>
+                            <validate>required-entry</validate>
+                        </priority>
+                        <price translate="label">
+                            <label>Deal Price Attribute</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>me_shopdash/system_config_source_priceattributes</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Please select deal price attribute.</comment>
+                            <depends>
+                                <deal_enable>1</deal_enable>
+                            </depends>
+                            <validate>required-entry</validate>
+                        </price>
+                    </fields>
+                </deals>
+
+            </groups>
+        </shopdash>
+        <info>
+            <label>About ShopDash</label>
+            <tab>shopdash_tab</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1001</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <shopdash_info translate="label">
+                    <label>About ShopDash</label>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment><![CDATA[<div style="background: #ff4f03;"><img src="http://magevolve.hu/other/shopdash_header.png" alt="ShopDash" /></div><div style="display: inline-block; padding: 10px;"><p> <br/>ShopDash brings online shopping to tablets and lets users shop across many online retailers in one convenient and easy-to-use app. Products are organized into categories and by retailers of various brands to give shoppers the desired “mall on your tablet” feel.</p><br/><div class="f-left"><p>Contact: <a href="mailto:info@shopdashapp.com" title="info@shopdashapp.com">info@shopdashapp.com</a></p><p>Support: <a href="mailto:support@shopdashapp.com" title="support@shopdashapp.com">support@shopdashapp.com</a></p><p>Web: <a href="http://shopdashapp.com" title="ShopDash" target="_blank">http://shopdashapp.com</a></div><div class="f-right"><a href="https://itunes.apple.com/hu/app/shopdash/id609564715?mt=8" title="ShopDash App Store" target="_blank"> <img src="http://magevolve.hu/other/shopdash_appstore.png" alt="ShopDash App Store" /></a></div><div class="clearer"></div></div><br/><br/><div style="display: block; width: 100%; height: 61px; background: #ff4f03 url(http://magevolve.hu/other/shopdash_footer.png) center right no-repeat;"><p style="color: #FFF; text-align: center; position: relative; top: 21px; font-size: 14px;">Copyright &copy; 2013 <a style="color: #FFF;" href="http://shopdashapp.com" title="ShopDash Inc." target="_blank">ShopDash Inc.</a> All rights reserved.</p></div><script type="text/javascript">Fieldset.toggleCollapse('info_shopdash_info');</script>]]></comment>
+                </shopdash_info>
+            </groups>
+        </info>
+        <help>
+            <label>Help</label>
+            <tab>shopdash_tab</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1002</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <shopdash_info translate="label">
+                    <label>Help</label>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment><![CDATA[<div style="background: #ff4f03;"> <img src="http://magevolve.hu/other/shopdash_header.png" alt="ShopDash" /></div><div style="padding: 10px 10px 5px 10px;"><p style="text-transform: uppercase; text-decoration: underline;"><strong>Basic configuration</strong></p><p><strong>Enable:</strong> Basic set up to enable or disable the module.<br /> <strong>Filename:</strong> Here you can set up the export files default name. I.e.: shopdash.xml. The export file name will be storeX_shopdash.xml, where X is the store id.<br /> <strong>Path</strong>: Here you can set up the custom directory path where the export files will be saved after the export.<br /> <strong>Start Time:</strong> Here you can set up the automatic daily export time which will run in the background executed by cron job. This requires that the cron configuration of the Magento system configured correctly both in the backend and on the server side.<br /> <strong>Redirect:</strong> Here you can choose where to redirect to user after checkout was processed in the ShopDash Application. If Shopping Cart is selected, the user will be directed to Shopping Cart page. If Checkout  is selected, the user will directly reach the webshop checkout page instead of shopping cart.<br /> <strong>Run Export Now:</strong> Here you can run the export process manually.</p><p style="text-transform: uppercase; text-decoration: underline;"><strong>Products configuration</strong></p><p><strong>Product Properties:</strong> Here you can select all the product attributes which will be included in the export file. Configurable required attributes will be included automatically in the export file.<br /> <strong>Unit of Quantity:</strong> Here you can select the products unit quantity attribute if the webshop has more than one unit quantity values.<br /> <strong>Custom Unit of Quantity:</strong> Here you can set up the basic unit of quantity which will be used for each product in the export file.<br /> <strong>Include Image Gallery:</strong> Here you can set up if the products media gallery should be included in the export file. For example if you have products with multiply images. If this setting set to NO, only the main images of the products will be exported.</p><p style="text-transform: uppercase; text-decoration: underline;"><strong>Category configuration</strong></p><p><strong>Select All Categories:</strong> Here you can set up to use all categories of the Magento store or not.<br /><strong>Selected Categories:</strong> Here you can select one or more categories. In this case only those products will be exported which are assigned to the selected categories.<br />Note: If you set up individual products for export in the Catalog / Manage ShopDash / Manage Export menu item, category configuration will not be used.</p><p style="text-transform: uppercase; text-decoration: underline;"><strong>Deal configuration</strong></p><p><strong>Enable Deal:</strong> Here you can set up to enable deals for products or not.<br /> <strong>Deal Name Attribute:</strong> Here you can select the product’s deal(discount) attribute to be used for the export.<br /> <strong>Custom Deal Name:</strong> If you don’t have deal(discount) attribute in the Magento store, you can set up a default deal name which will be used for each products in the export.<br /> <strong>Deal Priority:</strong> Here you can choose three different types of size which how deals will be showed in the ShopDash Application.<br /> <strong>Deal Price Attribute:</strong> Here you can select the product’s deal price attribute to be used for the export, for example Special Price attribute.</p></div><div style="display: block; width: 100%; height: 61px; background: #ff4f03 url(http://magevolve.hu/other/shopdash_footer.png) center right no-repeat;"><p style="color: #FFF; text-align: center; position: relative; top: 21px; font-size: 14px;">Copyright &copy; 2013 <a style="color: #FFF;" href="http://shopdashapp.com" title="ShopDash Inc." target="_blank">ShopDash Inc.</a> All rights reserved.</p></div><script type="text/javascript">Fieldset.toggleCollapse('help_shopdash_info');</script>]]></comment>
+                </shopdash_info>
+            </groups>
+        </help>
+    </sections>
+</config>

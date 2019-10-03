@@ -1,17 +1,5 @@
 {
-    "name": "OpenMageModuleFostering/Me_Shopdash",
-    "type": "magento-module",
-    "license": "Open-Software-License-(OSL-3.0)",
-    "homepage": "",
-    "description": "The module provides communication between Magento and ShopDash  Application(http://shopdashapp.com).
-ShopDash Inc., ShopDash Magento Extension",
-    "authors": [
-    {
-        "name": "ShopDash",
-        "email": "info@shopdashapp.com"
-    }
-],
-    "suggest": {
-        "magento-hackathon/magento-composer-installer": "*"
-    }
+    "keywords": [
+        "openmage-module"
+    ]
 }
